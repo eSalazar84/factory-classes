@@ -1,0 +1,19 @@
+{
+  "name": "fabrica",
+  "version": "1.0.0",
+  "description": "\u0016Repositorio con ejercicio sobre clases en POO",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eSalazar84/factory-classes.git"
+  },
+  "author": "Emiliano Salazar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eSalazar84/factory-classes/issues"
+  },
+  "homepage": "https://github.com/eSalazar84/factory-classes#readme"
+}
