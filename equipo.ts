@@ -1,31 +1,33 @@
+import { Bomba } from "./bomba";
+
 export class Equipo {
   private id: string;
   private description: string;
   private manufactureDate: Date;
   private installationDate: Date;
+  private bomba: Bomba;
   constructor(
     id: string,
     description: string,
     manufacture: Date,
-    installationDate: Date
+    installationDate: Date,
+    bomba: Bomba
   ) {
     this.id = id;
     this.description = description;
     this.manufactureDate = manufacture;
     this.installationDate = installationDate;
+    this.bomba = bomba;
   }
-  getAddEquip(): string {
-    if (this.manufactureDate < this.installationDate) {
-      return `
+  getEquip(): string {
+    return `
         Se agrego el equipo ${this.id} con los siguientes datos:
         Equipo = ${this.id}
         Descripción = ${this.description}
         Fecha de Fabricacion = ${this.manufactureDate}
         Fecha de Instalacion = ${this.installationDate}
+        Bomba = ${this.bomba.getBomb()}
         `;
-    } else {
-      return `La fecha de instalacion no puede ser menor a la fecha de manufactura`;
-    }
   }
   getReadEquip(dataSearch: string, array: Equipo[]): any {
     const data = array.filter((listado) => listado.id === dataSearch);
@@ -47,86 +49,16 @@ export class Equipo {
       );
     }
   }
-  getEditEquip(id: string, array: Equipo[], datoAcambiar: string) {
-    const modificarDato:Equipo = this.getReadEquip(id, array);    
+  getEditEquip(dataSearch: string, array: Equipo[], datoAcambiar: string) {
+    const modificarDato: Equipo = this.getReadEquip(dataSearch, array);
     if (modificarDato) {
       modificarDato.id = datoAcambiar;
       console.log(
         `El equipo ${this.id} ha sido modificado y ahora se llama ${datoAcambiar}`
       );
-      return
+      return;
     } else {
       console.log(`El equipo no se ha podido modificar-`);
     }
   }
 }
-
-const lavarropas: Equipo = new Equipo(
-  `Drean`,
-  `lavarropas automatico`,
-  new Date("2022-02-20"),
-  new Date()
-);
-lavarropas.getAddEquip();
-//console.log(lavarropas.getAddEquip());
-
-const lavarropas_2: Equipo = new Equipo(
-  `Drean`,
-  `lavarropas automatico`,
-  new Date("2022-02-20"),
-  new Date()
-);
-lavarropas.getAddEquip();
-const lavarropas_3: Equipo = new Equipo(
-  `Longvie`,
-  `lavarropas automatico`,
-  new Date("2022-02-20"),
-  new Date()
-);
-lavarropas.getAddEquip();
-const lavarropas_4: Equipo = new Equipo(
-  `LG`,
-  `lavarropas`,
-  new Date("2022-02-20"),
-  new Date()
-);
-lavarropas.getAddEquip();
-const lavarropas_5: Equipo = new Equipo(
-  `Samsung`,
-  `lavarropas automatico`,
-  new Date("2022-02-20"),
-  new Date()
-);
-lavarropas.getAddEquip();
-const lavarropas_6: Equipo = new Equipo(
-  `LG`,
-  `lavarropas automatico`,
-  new Date("2022-02-20"),
-  new Date()
-);
-lavarropas.getAddEquip();
-const lavarropas_7: Equipo = new Equipo(
-  `Hisense`,
-  `lavarropas automatico`,
-  new Date("2022-02-20"),
-  new Date()
-);
-lavarropas.getAddEquip();
-
-const listLavarropas: Equipo[] = [
-  lavarropas,
-  lavarropas_2,
-  lavarropas_3,
-  lavarropas_4,
-  lavarropas_5,
-  lavarropas_6,
-  lavarropas_7,
-];
-
-//lavarropas.getReadEquip(`LG`,listLavarropas);
-lavarropas.getReadEquip(`LG`, listLavarropas);
-console.table(lavarropas.getReadEquip(`LG`, listLavarropas));
-
-console.table(lavarropas.getDeleteEquip(`Samsung`, listLavarropas));
-
-console.table(lavarropas.getEditEquip(`LG`,listLavarropas,`Lg`))
