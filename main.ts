@@ -18,7 +18,7 @@ fs.writeFileSync(`./base-datos/listado-bombas.json`,bombaToJson,`utf8`);
 
 //---------------------------------------------------------------------------------
 
-const lavarropas: Equipo = new Equipo(`Drean`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_1);
+const lavarropas_1: Equipo = new Equipo(`Drean`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_1);
 const lavarropas_2: Equipo = new Equipo(`Drean`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_2);
 const lavarropas_3: Equipo = new Equipo(`Longvie`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_4);
 const lavarropas_4: Equipo = new Equipo(`LG`,`lavarropas`,new Date("2022-02-20"),new Date(),bomba_7);
@@ -26,7 +26,7 @@ const lavarropas_5: Equipo = new Equipo(`Samsung`,`lavarropas automatico`,new Da
 const lavarropas_6: Equipo = new Equipo(`LG`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_7);
 const lavarropas_7: Equipo = new Equipo(`Hisense`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_8);
 
-const listLavarropas: Equipo[] = [lavarropas,lavarropas_2,lavarropas_3,lavarropas_4,lavarropas_5,lavarropas_6,lavarropas_7,];
+const listLavarropas: Equipo[] = [lavarropas_1,lavarropas_2,lavarropas_3,lavarropas_4,lavarropas_5,lavarropas_6,lavarropas_7,];
 
 const equipoToJson=JSON.stringify(listLavarropas);
 fs.writeFileSync(`./base-datos/listado-equipos.json`,equipoToJson,`utf8`);
