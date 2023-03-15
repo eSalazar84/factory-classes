@@ -1,6 +1,9 @@
 import  fs from "fs";
 import { Bomba } from "./bomba";
 import { Equipo } from "./equipo";
+import { KitMangueras } from "./kit-mangueras";
+
+//CLASE BOMBA
 
 const bomba_1:Bomba=new Bomba(`1HP750W`,25,33,`Nero`);
 const bomba_2:Bomba=new Bomba(`0.5HP750W`,21,27,`Gamma`);
@@ -18,6 +21,31 @@ fs.writeFileSync(`./base-datos/listado-bombas.json`,bombaToJson,`utf8`);
 
 //---------------------------------------------------------------------------------
 
+//CLASE KIT MANGUERAS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const lavarropas_1: Equipo = new Equipo(`Drean`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_1);
 const lavarropas_2: Equipo = new Equipo(`Drean`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_2);
 const lavarropas_3: Equipo = new Equipo(`Longvie`,`lavarropas automatico`,new Date("2022-02-20"),new Date(),bomba_4);
@@ -30,5 +58,3 @@ const listLavarropas: Equipo[] = [lavarropas_1,lavarropas_2,lavarropas_3,lavarro
 
 const equipoToJson=JSON.stringify(listLavarropas);
 fs.writeFileSync(`./base-datos/listado-equipos.json`,equipoToJson,`utf8`);
-
-console.table(lavarropas_2.getEquip());

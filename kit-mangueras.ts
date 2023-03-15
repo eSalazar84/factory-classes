@@ -1,18 +1,30 @@
+enum MaterialRoscas{pvc,acero,goma,tergopol,plastico};
+
 export class KitMangueras {
   private id: string;
   private elementos: number;
   private medidaPulgadas: number;
-  private roscasMaterial: Enum;
+  private roscasMaterial: MaterialRoscas;
   constructor(
     id: string,
     elementos: number,
     medidaPulgadas: number,
-    roscasMaterial: Enum
+    roscasMaterial: MaterialRoscas
   ) {
     this.id = id;
     this.elementos = elementos;
     this.medidaPulgadas = medidaPulgadas;
     this.roscasMaterial = roscasMaterial;
+  }
+  private getMaterialRosca(material: MaterialRoscas): string {
+    const materiales = {
+      1: "pvc",
+      2: "acero",
+      3: "goma",
+      4: "tergopol",
+      5: "plastico"
+    };
+    return materiales[material] || "No es un material para una rosca";
   }
   getKit(): string {
     return `
