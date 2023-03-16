@@ -1,4 +1,4 @@
-enum MaterialRoscas{pvc,acero,goma,tergopol,plastico};
+export enum MaterialRoscas {PVC,acero,goma,tergopol,plastico,}
 
 export class KitMangueras {
   private id: string;
@@ -16,22 +16,22 @@ export class KitMangueras {
     this.medidaPulgadas = medidaPulgadas;
     this.roscasMaterial = roscasMaterial;
   }
-  private getMaterialRosca(material: MaterialRoscas): string {
+  getMaterialRosca(roscasMaterial: MaterialRoscas): string {
     const materiales = {
-      1: "pvc",
+      1: "PVC",
       2: "acero",
       3: "goma",
       4: "tergopol",
-      5: "plastico"
+      5: "plastico",
     };
-    return materiales[material] || "No es un material para una rosca";
+    return materiales[roscasMaterial] || "No es un material para una rosca";
   }
   getKit(): string {
     return `
             id Kit Manguera = ${this.id}
             Elementos = ${this.elementos}
             Medida en Pulgadas = ${this.medidaPulgadas}"
-            Material de las roscas = ${this.roscasMaterial}
+            Material de las roscas = ${this.}
             `;
   }
   getReadKit(dataSearch: string, array: KitMangueras[]): any {
@@ -67,3 +67,5 @@ export class KitMangueras {
     }
   }
 }
+
+
