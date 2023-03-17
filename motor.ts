@@ -1,10 +1,10 @@
 export enum Eficiencia {
-  A=1,
-  B=2,
-  C=3,
-  D=4,
-  E=5,
-  F=6,
+  A = "A",
+  B = "B",
+  C = "C",
+  D = "D",
+  E = "E",
+  F = "F",
 }
 
 export class Motor {
@@ -12,35 +12,19 @@ export class Motor {
   protected potenciaHP: number;
   protected eficiencia: Eficiencia;
   protected fabricante: string;
-  constructor(
-    id: string,
-    potenciaHP: number,
-    eficiencia: Eficiencia,
-    fabricante: string
-  ) {
+  constructor(id: string,potenciaHP:number,eficiencia:Eficiencia,fabricante:string) {
     this.id = id;
-    this.potenciaHP = potenciaHP;
-    this.eficiencia = eficiencia;
-    this.fabricante = fabricante;
+    this.potenciaHP=potenciaHP;
+    this.eficiencia=eficiencia;
+    this.fabricante=fabricante
   }
-  private getEficiencia(eficiencia: Eficiencia): string {
-    const elementos = {
-      1: "A",
-      2: "B",
-      3: "C",
-      4: "D",
-      5: "E",
-      6: "F",
-    };
-    return elementos[eficiencia] || "desconocido";
-  }
-  setMotor():string{
+  getInfo(): string {
     return `
     Modelo = ${this.id}
     Potencia = ${this.potenciaHP}HP
     Eficiencia = ${this.eficiencia}
-    Fabricante = ${this.fabricante}
-    `
+    Fabricante = ${this.fabricante}        
+    `;
   }
   getReadMotor(dataSearch: string, array: Motor[]): any {
     const data = array.filter((listado) => listado.id === dataSearch);
@@ -48,6 +32,30 @@ export class Motor {
       return data;
     } else {
       return `${dataSearch} No existe en el sistema-`;
+    }
+  }
+  getDeleteMotor(dataDelete: string, array: Motor[]): any {
+    const data = array.findIndex((listado) => listado.id == dataDelete);
+    if (data >= 0) {
+      array.splice(data, 1);
+      console.log(`Equipo eliminado ${dataDelete}`);
+      return array;
+    } else {
+      console.log(
+        `Equipo ${dataDelete} NO ha sido eliminado ya que no existe en el sistema-`
+      );
+    }
+  }
+  getEditEquip(dataSearch: string, array: Motor[], datoAcambiar: string) {
+    const modificarDato: Motor = this.getReadMotor(dataSearch, array);
+    if (modificarDato) {
+      modificarDato.id = datoAcambiar;
+      console.log(
+        `El equipo ${this.id} ha sido modificado y ahora se llama ${datoAcambiar}`
+      );
+      return;
+    } else {
+      console.log(`El equipo no se ha podido modificar-`);
     }
   }
 }

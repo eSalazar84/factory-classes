@@ -1,40 +1,24 @@
 import { Eficiencia, Motor } from "./motor";
 
-class MotorElectrico extends Motor {
-  protected id: string;
-  protected voltaje: string;
+export class MotorElectrico extends Motor {
+  protected voltaje: number;
   protected consumoKwH: number;
   protected isBajoConsumo: boolean;
-  constructor(
-    id: string,
-    voltaje: string,
-    consumoKwH: number,
-    isBajoConsumo: boolean
-  ) {
-    super(`generic`, 999, Eficiencia.A, `Volvo`),
-      this.id = id;
-      this.voltaje = voltaje;
-      this.consumoKwH = consumoKwH;
-      this.isBajoConsumo = isBajoConsumo
+  constructor(id: string,potenciaHP:number,eficiencia:Eficiencia,fabricante:string,voltaje:number,consumoKwH:number,isBajoConsumo:boolean) {
+    super(id,potenciaHP,eficiencia,fabricante);
+    this.voltaje=voltaje;
+    this.consumoKwH=consumoKwH;
+    this.isBajoConsumo=isBajoConsumo;
   }
   switchOnOff(isBajoConsumo: boolean): boolean {
     return (isBajoConsumo = !isBajoConsumo);
   }
-  setMotorElectrico(): string {
+  getInfoElectric(): string {
     return `
-        Modelo = ${this.id}
-        Voltaje = ${this.voltaje}V
-        Consumo = ${this.consumoKwH}KwH
-        Es Bajo Consumo? = ${this.isBajoConsumo}
-        `;
+    Modelo = ${this.id}
+    Voltaje = ${this.voltaje}V
+    Consumo = ${this.consumoKwH}KwH
+    Es de Bajo Consumo? = ${this.isBajoConsumo}        
+    `;
   }
 }
-
-const electrico: MotorElectrico = new MotorElectrico(
-  `Robotito`,
-  `2000`,
-  5240,
-  true
-);
-
-console.log(electrico);

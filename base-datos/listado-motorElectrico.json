@@ -1,0 +1,1 @@
+[{"id":"Tesla Automate","potenciaHP":2000,"eficiencia":"A","fabricante":"Tesla Motors","voltaje":700,"consumoKwH":8000,"isBajoConsumo":true},{"id":"Robotito","potenciaHP":1500,"eficiencia":"C","fabricante":"Chinwain","voltaje":157,"consumoKwH":3000,"isBajoConsumo":false}]

@@ -1,5 +1,8 @@
 import { Bomba } from "./bomba";
 import { KitMangueras } from "./kit-mangueras";
+import { Motor } from "./motor";
+import { MotorCombustion } from "./motorCombustible";
+import { MotorElectrico } from "./motorElectrico";
 
 export class Equipo {
   private id: string;
@@ -8,13 +11,15 @@ export class Equipo {
   private installationDate: Date;
   private bomba: Bomba;
   private kitMangueras: KitMangueras;
+  private motor:MotorElectrico | MotorCombustion;
   constructor(
     id: string,
     description: string,
     manufacture: Date,
     installationDate: Date,
     bomba: Bomba,
-    kitMangueras: KitMangueras
+    kitMangueras: KitMangueras,
+    motor: MotorElectrico | MotorCombustion
   ) {
     this.id = id;
     this.description = description;
@@ -22,6 +27,7 @@ export class Equipo {
     this.installationDate = installationDate;
     this.bomba = bomba;
     this.kitMangueras = kitMangueras;
+    this.motor=motor
   }
   getEquip(): string {
     return `
@@ -32,6 +38,7 @@ export class Equipo {
         Fecha de Instalacion = ${this.installationDate}
         Bomba = ${this.bomba}
         Kit de Mangueras = ${this.kitMangueras}
+        Motor = ${this.motor}
         `;
   }
   getReadEquip(dataSearch: string, array: Equipo[]): any {

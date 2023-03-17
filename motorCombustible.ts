@@ -1,44 +1,25 @@
 import { Eficiencia, Motor } from "./motor";
 
 export enum CombustibleType {
-  aceite = 1,
-  gas_oil = 2,
-  GNC = 3,
-  nafta = 4,
+  aceite = "aceite",
+  gas_oil = "gas_oil",
+  GNC = "GNC",
+  nafta = "nafta",
 }
 
-class MotorCombustion extends Motor {
-  protected id: string;
+export class MotorCombustion extends Motor {
   protected cilindros: number;
   protected tipoCombustible: CombustibleType;
-  constructor(id: string, cilindros: number, tipoCombustible: CombustibleType) {
-    super(`generic`, 999, Eficiencia.A, `Volvo`);
-    this.id = id;
-    this.cilindros = cilindros;
-    this.tipoCombustible = tipoCombustible;
+  constructor(id: string,potenciaHP:number,eficiencia:Eficiencia,fabricante:string,cilindros:number,tipoCombustible:CombustibleType) {
+    super(id,potenciaHP,eficiencia,fabricante);
+    this.cilindros=cilindros;
+    this.tipoCombustible=tipoCombustible
   }
-  private getCombustible(tipoCombustible: CombustibleType): string {
-    const listado = {
-      1: "aceite",
-      2: "gas_oil",
-      3: "GNC",
-      4: "nafta",
-    };
-    return listado[tipoCombustible] || `Desconocido`;
-  }
-  setMotorCombustible(): string {
+  getInfoCombustion(): string {
     return `
-        Modelo = ${this.id}
-        Cilindros = ${this.cilindros}
-        Tipo de Combustible = ${this.tipoCombustible}
-        `;
+    Modelo = ${this.id}
+    Cilindros = ${this.cilindros}V
+    Tipo de Combustible = ${this.tipoCombustible}
+    `;
   }
 }
-
-const combustion: MotorCombustion = new MotorCombustion(
-  `V8 TURBO`,
-  8,
-  CombustibleType.nafta
-);
-
-console.log(combustion);
